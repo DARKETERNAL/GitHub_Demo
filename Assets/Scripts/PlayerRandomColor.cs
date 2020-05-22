@@ -6,19 +6,23 @@ public class PlayerRandomColor : MonoBehaviour {
  
     new Renderer renderer;
     float time = 0;
-    Color color;
+    float duration = 1.5f;
+    Color color1;
+    Color color2;
 
     void Awake() {
         renderer = GetComponent<Renderer>();
-        color = new Color(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f));
+        color1 = renderer.material.color;
+        color2 = new Color(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f));
     }
 
     void Update() {
 
-        renderer.material.color = Color.Lerp(renderer.material.color, color, time);
-        if (time >= 1f) {
+        renderer.material.color = Color.Lerp(color1, color2, time/ duration);
+        if (time >= duration) {
             time = 0;
-            color = new Color(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f));
+            color1 = color2;
+            color2 = new Color(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f));
         }
         time += Time.deltaTime;
     }
