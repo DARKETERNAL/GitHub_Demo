@@ -29,15 +29,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        vVal = Input.GetAxis("Vertical");
-        transform.Translate(transform.forward * vVal * moveSpeed * Time.deltaTime);
-
-        hVal = Input.GetAxis("Mouse X");
-        transform.Rotate(transform.up * rotationSpeed * hVal * Time.deltaTime);
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            myRigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        }
+        
     }
 }
