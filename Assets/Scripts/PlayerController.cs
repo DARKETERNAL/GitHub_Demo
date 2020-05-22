@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         vVal = Input.GetAxis("Vertical");
         transform.Translate(transform.forward * vVal * moveSpeed * Time.deltaTime);
 
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) {
             GameObject clon = Instantiate(projectile, transform.position, Quaternion.identity);
             clon.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
-
         }
+
     }
 }
