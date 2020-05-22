@@ -3,6 +3,10 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+
+    [SerializeField]
+    GameObject projectile;
+
     [SerializeField]
     [Range(10F, 60F)]
     private float moveSpeed = 10F;
@@ -38,6 +42,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             myRigidbody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+
+        if (Input.GetButtonDown("Fire1")) {
+            GameObject clon = Instantiate(projectile, transform.position, Quaternion.identity);
+            clon.GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+
         }
     }
 }
